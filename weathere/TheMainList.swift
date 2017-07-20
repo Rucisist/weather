@@ -134,8 +134,7 @@ class TheMainList: UITableViewController {
                         self.POIs.append(POI(nameOfPOI: place.name, webOfPOI: String(describing: place.website), ratingOfPOI: place.rating, lattitudeOfPOI: place.coordinate.latitude, longitudeOfPOI: place.coordinate.longitude, wikiDescription: self.wikiD, wikiSite: self.wikiS))
                         
                         
-                        self.managerData.getWikiForThePlace(nameOfPOI: place.name)
-                        
+                        self.managerData.getWikiForThePlace(place: place)
                         
                     }
 
@@ -151,6 +150,9 @@ class TheMainList: UITableViewController {
 //        }
         print(managerData.loadPOIListDB())
 
+        //print(managerData.loadDB(POIName: "https://ru.wikipedia.org/wiki/Apple")[0].tempList[0].wikiDescription)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -199,7 +201,6 @@ class TheMainList: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
         switch(segue.identifier ?? "") {
         case "showMap1":
             guard let mapDetailViewController = segue.destination as? MapViewController else {

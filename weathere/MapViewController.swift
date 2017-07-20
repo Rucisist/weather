@@ -9,11 +9,60 @@
 import UIKit
 import MapKit
 import RealmSwift
+import AVFoundation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
     @IBOutlet weak var textField: UITextView!
 
+    
+    let synthesizer : AVSpeechSynthesizer = AVSpeechSynthesizer()
+    var utterance : AVSpeechUtterance = AVSpeechUtterance(string: "")
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .interruptSpokenAudioAndMixWithOthers)
+        // utterance.voice = AVSpeechSynthesisVoice(identifier: "en-GB")
+        //synthesizer.pauseSpeaking(at: .word)
+    }
+    
+        
+    
+    
     @IBOutlet weak var mapView: MKMapView!
+    @IBAction func speakk(_ sender: Any) {
+        
+        UserDefaults.standard.set(["ru"], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+        
+        
+        
+        let detailsData = self.manager1.loadDB(POIName: self.theNameOfOrganisation)
+        print("dfsdfsdggdsfgfd"+String(describing:  detailsData[0].tempList[0].wikiSite))
+        
+        utterance = AVSpeechUtterance(string: String(describing:  detailsData[0].tempList[0].wikiDescription) )
+        //speak1()
+       
+        
+        //synthesizer.pauseSpeaking(at: .word)
+        if synthesizer.isPaused{
+            //synthesizer.speak(utterance)
+            synthesizer.continueSpeaking()
+            //print()
+            return
+        }
+        if synthesizer.isSpeaking {
+            synthesizer.pauseSpeaking(at: .word)
+            return
+        }
+        else{
+            synthesizer.speak(utterance)
+            synthesizer.continueSpeaking()
+            return
+        }
+
+    }
+    
+
+    
     
     var locationManager: CLLocationManager!
     var long: CLLocationDegrees!
@@ -33,9 +82,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
+
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -128,12 +184,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
             
             
-            let detailsData = self.manager1.loadDB(POIName: "GoPro")
-            print(detailsData)
-            
-            
-            print()
-        
 //        let thePlacemark = MKPlacemark(coordinate: cord, addressDictionary: nil)
 //        
 //        let theMapItem = MKMapItem(placemark: thePlacemark)
@@ -149,8 +199,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        self.mapView.setRegion(coordinateRegion, animated: true)
         
             }}
+        
+        
+        let detailsData = self.manager1.loadDB(POIName: self.theNameOfOrganisation)
+        print("dfsdfsdggdsfgfd"+String(describing:  detailsData[0].POI_name))
+        
+
+        //print()
+
 
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -186,6 +246,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }}
 
 
+    override func viewWillDisappear(_ animated: Bool) {
+        synthesizer.stopSpeaking(at: .immediate)
+        
+        
+        
+    }
     /*
     // MARK: - Navigation
 
