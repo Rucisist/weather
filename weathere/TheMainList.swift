@@ -98,6 +98,9 @@ class TheMainList: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addfile()
+        readFile()
         print(Realm.Configuration.defaultConfiguration.fileURL ?? "i")
         
         //let acController = GMSAutocompleteViewController()
@@ -231,6 +234,55 @@ class TheMainList: UITableViewController {
             
             
         }}
+    
+    
+    var file_list: [String] = []
+    var dir: String = ""
+    
+//    @IBAction func addDir(_ sender: Any) {
+//        let alert = UIAlertController(title: "Create dir", message: "Input Dir name", preferredStyle: .alert)
+//        alert.addTextField { (textField) in
+//            textField.text = ""
+//        }
+//        
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+//            if let newDirName = alert.textFields![0].text {
+//                let newDir = self.dir + "/" + newDirName
+//                ft.createDir(dirName: newDir)
+//                self.file_list = ft.checkFilesInDirectory(dirname: self.dir)
+//                self.tableView.reloadData()
+//            }
+//        }))
+//        
+//        self.present(alert, animated: true, completion: nil)
+//        
+//    }
+//    
+    var filename: String = ""
+func addfile() {
+        
+        let alert = UIAlertController(title: "Create file", message: "Input file name", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = ""
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            if let newFileName = alert.textFields![0].text {
+                ft.createFile(dirname: self.dir, filename: newFileName)
+                self.file_list = ft.checkFilesInDirectory(dirname: self.dir)
+                //self.tableView.reloadData()
+                self.filename = newFileName
+            }
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    func readFile(){
+        var d = ft.readFile(filename: filename)
+        print("sdfsdafsadf"+d)
+    }
+
 
     
     /*

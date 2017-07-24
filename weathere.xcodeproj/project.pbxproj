@@ -25,6 +25,7 @@
 		BF9050501F139A8C004F71CE /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90504F1F139A8C004F71CE /* POI.swift */; };
 		BF9050521F139EF9004F71CE /* TheMainListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9050511F139EF9004F71CE /* TheMainListCell.swift */; };
 		BF9050541F13B775004F71CE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9050531F13B775004F71CE /* WebViewController.swift */; };
+		BFAB7B491F25EDF500FBCE7E /* FilesTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB7B481F25EDF500FBCE7E /* FilesTasks.swift */; };
 		BFCFB13B1F1CF0BE00B38E8C /* imav.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCFB13A1F1CF0BE00B38E8C /* imav.png */; };
 		D72A62E6E13D7DA4AE03FDC9 /* Pods_weathereUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629D1797E6E4968F3FC93631 /* Pods_weathereUITests.framework */; };
 		D7B2878EC24219D38B78F229 /* Pods_weathereTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAE00980D53D36F39120B51F /* Pods_weathereTests.framework */; };
@@ -77,6 +78,7 @@
 		BF90504F1F139A8C004F71CE /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 		BF9050511F139EF9004F71CE /* TheMainListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheMainListCell.swift; sourceTree = "<group>"; };
 		BF9050531F13B775004F71CE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		BFAB7B481F25EDF500FBCE7E /* FilesTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesTasks.swift; sourceTree = "<group>"; };
 		BFCFB13A1F1CF0BE00B38E8C /* imav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imav.png; sourceTree = "<group>"; };
 		D8949627731D7BA55894334B /* Pods_weathere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weathere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB8E7742249A77BBAE13E5B /* Pods-weathereUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weathereUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-weathereUITests/Pods-weathereUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				BFCFB13A1F1CF0BE00B38E8C /* imav.png */,
 				BF90504F1F139A8C004F71CE /* POI.swift */,
 				BF90504D1F1381E8004F71CE /* TheMainList.swift */,
+				BFAB7B481F25EDF500FBCE7E /* FilesTasks.swift */,
 				BF9050511F139EF9004F71CE /* TheMainListCell.swift */,
 				BF470E051F0AB8EF00811E4B /* Main.storyboard */,
 				BF9050531F13B775004F71CE /* WebViewController.swift */,
@@ -493,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF90504E1F1381E8004F71CE /* TheMainList.swift in Sources */,
+				BFAB7B491F25EDF500FBCE7E /* FilesTasks.swift in Sources */,
 				BF9050501F139A8C004F71CE /* POI.swift in Sources */,
 				BF9050521F139EF9004F71CE /* TheMainListCell.swift in Sources */,
 				BF470E041F0AB8EF00811E4B /* ViewController.swift in Sources */,
