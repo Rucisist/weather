@@ -13,12 +13,17 @@ import MapKit
 import GooglePlaces
 import RealmSwift
 
-class TheMainList: UITableViewController {
+extension Array {
+    public subscript(safe index: Int) -> Element? {
+        guard index >= 0, index < endIndex else {
+            return nil
+        }
 
-    
-    
-    
-    
+        return self[index]
+    }
+}
+
+class TheMainList: UITableViewController {
     var POIs: [POI] = []
     var lat: CLLocationDegrees!
     var long: CLLocationDegrees!
@@ -31,12 +36,6 @@ class TheMainList: UITableViewController {
     //let sViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mapViewController") as! MapViewController
     
     var manager:CLLocationManager!
-    //nameOfPOI: String
-//    func showWikiInInternalView (defaultURL: String){
-//        let request = NSURLRequest(url: NSURL(string: defaultURL)! as URL) as URLRequest
-//        
-//       // internalBrowser.loadRequest(request)
-//    }
     
     func getWikiForThePlace(nameOfPOI: String) -> Bool {
         var isOk: Bool = true
@@ -217,8 +216,8 @@ class TheMainList: UITableViewController {
                 fatalError("The selected cell is not being displayed by the table")
             }
 
-            mapDetailViewController.lat = POIs[indexPath.row].lattitudeOfPOI
-            mapDetailViewController.long = POIs[indexPath.row].longitudeOfPOI
+            mapDetailViewController.lat = POIs[safe: indexPath.row].lattitudeOfPOI
+            mapDetailViewController.long = POIs[safe: indexPath.row].longitudeOfPOI
             mapDetailViewController.theNameOfOrganisation = POIs[indexPath.row].nameOfPOI
 //            mapDetailViewController.URL1 = self.wd[indexPath.row]
 //            mapDetailViewController.URL2 = self.ws[indexPath.row]
@@ -267,7 +266,7 @@ func addfile() {
         }
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-            if let newFileName = alert.textFields![0].text {
+            if let newFileName = alert.textFields?[safe: 0].text {
                 ft.createFile(dirname: self.dir, filename: newFileName)
                 self.file_list = ft.checkFilesInDirectory(dirname: self.dir)
                 //self.tableView.reloadData()
@@ -280,7 +279,6 @@ func addfile() {
     }
     func readFile(){
         var d = ft.readFile(filename: filename)
-        print("sdfsdafsadf"+d)
     }
 
 
